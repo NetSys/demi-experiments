@@ -16,4 +16,6 @@ akka-raft-fuzz_2015_05_18_17_09_51*:
     as short run (below) by reordering or allowing not previously seen
     messages.
 
-
+akka-raft-fuzz_2015_05_19_17_49_06*:
+  - Short run of a new two-leader bug, after support for message shrinking.
+    Should be pretty close to minimal.
