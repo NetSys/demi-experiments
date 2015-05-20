@@ -1,0 +1,65 @@
+Sched knows about actor raft-member-5
+System has created a new actor: raft-member-5
+Sched knows about actor raft-member-4
+System has created a new actor: raft-member-4
+Sched knows about actor raft-member-1
+System has created a new actor: raft-member-1
+Sched knows about actor raft-member-6
+System has created a new actor: raft-member-6
+Sched knows about actor raft-member-2
+System has created a new actor: raft-member-2
+Sched knows about actor raft-member-3
+System has created a new actor: raft-member-3
+Sched knows about actor raft-member-7
+System has created a new actor: raft-member-7
+Sched knows about actor raft-member-9
+System has created a new actor: raft-member-9
+Sched knows about actor raft-member-8
+System has created a new actor: raft-member-8
+[INFO] [05/19/2015 18:32:44.020] [new-system-0-akka.actor.default-dispatcher-9] [akka://new-system-0/user/raft-member-9] Starting new Raft member, will wait for raft cluster configuration...
+[INFO] [05/19/2015 18:32:44.020] [new-system-0-akka.actor.default-dispatcher-2] [akka://new-system-0/user/raft-member-1] Starting new Raft member, will wait for raft cluster configuration...
+[INFO] [05/19/2015 18:32:44.020] [new-system-0-akka.actor.default-dispatcher-4] [akka://new-system-0/user/raft-member-4] Starting new Raft member, will wait for raft cluster configuration...
+[INFO] [05/19/2015 18:32:44.020] [new-system-0-akka.actor.default-dispatcher-6] [akka://new-system-0/user/raft-member-3] Starting new Raft member, will wait for raft cluster configuration...
+[INFO] [05/19/2015 18:32:44.020] [new-system-0-akka.actor.default-dispatcher-7] [akka://new-system-0/user/raft-member-2] Starting new Raft member, will wait for raft cluster configuration...
+[INFO] [05/19/2015 18:32:44.020] [new-system-0-akka.actor.default-dispatcher-10] [akka://new-system-0/user/raft-member-8] Starting new Raft member, will wait for raft cluster configuration...
+[INFO] [05/19/2015 18:32:44.020] [new-system-0-akka.actor.default-dispatcher-3] [akka://new-system-0/user/raft-member-5] Starting new Raft member, will wait for raft cluster configuration...
+[INFO] [05/19/2015 18:32:44.020] [new-system-0-akka.actor.default-dispatcher-8] [akka://new-system-0/user/raft-member-7] Starting new Raft member, will wait for raft cluster configuration...
+[INFO] [05/19/2015 18:32:44.020] [new-system-0-akka.actor.default-dispatcher-5] [akka://new-system-0/user/raft-member-6] Starting new Raft member, will wait for raft cluster configuration...
+Trying replay:
+Sched knows about actor checkpoint_sink
+System has created a new actor: checkpoint_sink
+{"raft-member-3" : 1} raft-member-3: God spawned me
+{"raft-member-6" : 1} raft-member-6: God spawned me
+{"raft-member-7" : 1} raft-member-7: God spawned me
+{"raft-member-8" : 1} raft-member-8: God spawned me
+[INFO] [05/19/2015 18:32:44.131] [new-system-0-akka.actor.default-dispatcher-5] [akka://new-system-0/user/raft-member-8] Applying initial raft cluster configuration. Consists of [4] nodes: {raft-member-3, raft-member-6, raft-member-7, raft-member-8}
+[INFO] [05/19/2015 18:32:44.133] [new-system-0-akka.actor.default-dispatcher-5] [akka://new-system-0/user/raft-member-8] Finished init of new Raft member, becoming Follower. Initial election deadline: Deadline(1432085564341875000 nanoseconds)
+[INFO] [05/19/2015 18:32:44.136] [new-system-0-akka.actor.default-dispatcher-11] [akka://new-system-0/user/raft-member-7] Applying initial raft cluster configuration. Consists of [4] nodes: {raft-member-3, raft-member-6, raft-member-7, raft-member-8}
+[INFO] [05/19/2015 18:32:44.136] [new-system-0-akka.actor.default-dispatcher-11] [akka://new-system-0/user/raft-member-7] Finished init of new Raft member, becoming Follower. Initial election deadline: Deadline(1432085564365806000 nanoseconds)
+[INFO] [05/19/2015 18:32:44.137] [new-system-0-akka.actor.default-dispatcher-5] [akka://new-system-0/user/raft-member-3] Applying initial raft cluster configuration. Consists of [4] nodes: {raft-member-3, raft-member-6, raft-member-7, raft-member-8}
+[INFO] [05/19/2015 18:32:44.137] [new-system-0-akka.actor.default-dispatcher-5] [akka://new-system-0/user/raft-member-3] Finished init of new Raft member, becoming Follower. Initial election deadline: Deadline(1432085564352647000 nanoseconds)
+[INFO] [05/19/2015 18:32:44.143] [new-system-0-akka.actor.default-dispatcher-5] [akka://new-system-0/user/raft-member-7] Voting timeout, starting a new election (among 4)...
+[INFO] [05/19/2015 18:32:44.144] [new-system-0-akka.actor.default-dispatcher-5] [akka://new-system-0/user/raft-member-8] Initializing election (among 4 nodes) for Term(1)
+[INFO] [05/19/2015 18:32:44.146] [new-system-0-akka.actor.default-dispatcher-5] [akka://new-system-0/user/raft-member-7] Initializing election (among 4 nodes) for Term(2)
+[INFO] [05/19/2015 18:32:44.147] [new-system-0-akka.actor.default-dispatcher-5] [akka://new-system-0/user/raft-member-8] Voting timeout, starting a new election (among 4)...
+[INFO] [05/19/2015 18:32:44.148] [new-system-0-akka.actor.default-dispatcher-11] [akka://new-system-0/user/raft-member-3] Voting timeout, starting a new election (among 4)...
+[INFO] [05/19/2015 18:32:44.148] [new-system-0-akka.actor.default-dispatcher-5] [akka://new-system-0/user/raft-member-7] Initializing election (among 4 nodes) for Term(2)
+[INFO] [05/19/2015 18:32:44.149] [new-system-0-akka.actor.default-dispatcher-5] [akka://new-system-0/user/raft-member-8] Initializing election (among 4 nodes) for Term(2)
+[INFO] [05/19/2015 18:32:44.150] [new-system-0-akka.actor.default-dispatcher-11] [akka://new-system-0/user/raft-member-6] Applying initial raft cluster configuration. Consists of [4] nodes: {raft-member-3, raft-member-6, raft-member-7, raft-member-8}
+[INFO] [05/19/2015 18:32:44.150] [new-system-0-akka.actor.default-dispatcher-11] [akka://new-system-0/user/raft-member-6] Finished init of new Raft member, becoming Follower. Initial election deadline: Deadline(1432085564344181000 nanoseconds)
+[INFO] [05/19/2015 18:32:44.151] [new-system-0-akka.actor.default-dispatcher-5] [akka://new-system-0/user/raft-member-8] Received vote by Actor[akka://new-system-0/user/raft-member-3#851620882]; Have 2 of 4 votes
+[INFO] [05/19/2015 18:32:44.151] [new-system-0-akka.actor.default-dispatcher-8] [akka://new-system-0/user/raft-member-3] Initializing election (among 4 nodes) for Term(2)
+[INFO] [05/19/2015 18:32:44.152] [new-system-0-akka.actor.default-dispatcher-8] [akka://new-system-0/user/raft-member-6] Voting for Actor[akka://new-system-0/user/raft-member-8#1657614448] in Term(1)
+[INFO] [05/19/2015 18:32:44.152] [new-system-0-akka.actor.default-dispatcher-8] [akka://new-system-0/user/raft-member-8] Received vote by Actor[akka://new-system-0/user/raft-member-6#1017290647]; Won election with 3 of 4 votes
+[INFO] [05/19/2015 18:32:44.154] [new-system-0-akka.actor.default-dispatcher-8] [akka://new-system-0/user/raft-member-7] Received vote by Actor[akka://new-system-0/user/raft-member-3#851620882]; Won election with 3 of 4 votes
+Initiating checkpoint
+[WARN] [05/19/2015 18:32:44.157] [new-system-0-akka.actor.default-dispatcher-11] [akka://new-system-0/user/raft-member-8] unhandled event RequestVote(Term(2),Actor[akka://new-system-0/user/raft-member-7#294535648],Term(0),0) in state Leader
+RaftChecks.invariant. Checkpoint: Map(raft-member-9 -> Some(CheckpointReply(List(ReplicatedLog(List(),-1,5), LogIndexMap(Map(),0), LogIndexMap(Map(),-1), Meta(Actor[akka://new-system-0/user/raft-member-9#-1907407903],Term(0),StableRaftConfiguration(Set()),Map())))), raft-member-3 -> Some(CheckpointReply(List(ReplicatedLog(List(),-1,5), LogIndexMap(Map(),0), LogIndexMap(Map(),-1), ElectionMeta(Actor[akka://new-system-0/user/raft-member-3#851620882],Term(2),1,StableRaftConfiguration(Set(raft-member-3, raft-member-6, raft-member-7, raft-member-8)),Map(Term(2) -> Actor[akka://new-system-0/user/raft-member-3#851620882]))))), raft-member-6 -> Some(CheckpointReply(List(ReplicatedLog(List(),-1,5), LogIndexMap(Map(),0), LogIndexMap(Map(),-1), Meta(Actor[akka://new-system-0/user/raft-member-6#1017290647],Term(0),StableRaftConfiguration(Set(raft-member-3, raft-member-6, raft-member-7, raft-member-8)),Map(Term(1) -> Actor[akka://new-system-0/user/raft-member-8#1657614448]))))), raft-member-5 -> Some(CheckpointReply(List(ReplicatedLog(List(),-1,5), LogIndexMap(Map(),0), LogIndexMap(Map(),-1), Meta(Actor[akka://new-system-0/user/raft-member-5#-2122412436],Term(0),StableRaftConfiguration(Set()),Map())))), raft-member-8 -> Some(CheckpointReply(List(ReplicatedLog(List(),-1,5), LogIndexMap(Map(),0), LogIndexMap(Map(),-1), LeaderMeta(Actor[akka://new-system-0/user/raft-member-8#1657614448],Term(2),StableRaftConfiguration(Set(raft-member-3, raft-member-6, raft-member-7, raft-member-8)))))), raft-member-2 -> Some(CheckpointReply(List(ReplicatedLog(List(),-1,5), LogIndexMap(Map(),0), LogIndexMap(Map(),-1), Meta(Actor[akka://new-system-0/user/raft-member-2#-773349374],Term(0),StableRaftConfiguration(Set()),Map())))), raft-member-1 -> Some(CheckpointReply(List(ReplicatedLog(List(),-1,5), LogIndexMap(Map(),0), LogIndexMap(Map(),-1), Meta(Actor[akka://new-system-0/user/raft-member-1#1331409671],Term(0),StableRaftConfiguration(Set()),Map())))), raft-member-4 -> Some(CheckpointReply(List(ReplicatedLog(List(),-1,5), LogIndexMap(Map(),0), LogIndexMap(Map(),-1), Meta(Actor[akka://new-system-0/user/raft-member-4#-278990850],Term(0),StableRaftConfiguration(Set()),Map())))), raft-member-7 -> Some(CheckpointReply(List(ReplicatedLog(List(),-1,5), LogIndexMap(Map(),0), LogIndexMap(Map(),-1), LeaderMeta(Actor[akka://new-system-0/user/raft-member-7#294535648],Term(2),StableRaftConfiguration(Set(raft-member-3, raft-member-6, raft-member-7, raft-member-8)))))))
+Violations found! Map(ElectionSafety:raft-member-7:raft-member-8:Term(2) -> Set(raft-member-7, raft-member-8))
+Violation?: Some(RaftViolation(Map(ElectionSafety:raft-member-7:raft-member-8:Term(2) -> Set(raft-member-7, raft-member-8))))
+Done with replay
+Restarting system
+Shutting down the actor system. 10
+Shut down the actor system. 10
+RaftChecks, clear()'ing state
+Started a new actor system.
