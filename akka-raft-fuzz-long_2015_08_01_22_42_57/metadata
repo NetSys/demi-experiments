@@ -1,0 +1,31 @@
+{
+  "additional_metadata": null,
+  "argv": [
+    "./interposition/src/main/python/setup.py",
+    "-t",
+    "-n",
+    "akka-raft-fuzz-long"
+  ],
+  "cwd": "/Users/cs/Research/UCB/code/sts2-applications",
+  "host": {
+    "cpu_info": "",
+    "free": "",
+    "name": "yossarian",
+    "num_cores": "0",
+    "uptime": "22:42  up 5 days,  1:34, 6 users, load averages: 1.59 1.58 1.46"
+  },
+  "modules": {
+    "sts2": {
+      "branch": "raft-leader-safety",
+      "commit": "df6e945b3a110a556ca18db9d08c508222205c8b",
+      "diff": "",
+      "status": "On branch raft-leader-safety\nYour branch is ahead of 'origin/raft-leader-safety' by 1 commit.\n  (use \"git push\" to publish your local commits)\nnothing to commit, working directory clean"
+    }
+  },
+  "sys": {
+    "lsb_release": "",
+    "uname": "Darwin yossarian 14.4.0 Darwin Kernel Version 14.4.0: Thu May 28 11:35:04 PDT 2015; root:xnu-2782.30.5~1/RELEASE_X86_64 x86_64"
+  },
+  "timestamp": "2015_08_01_22_42_57",
+  "user": "cs"
+}
