@@ -1,0 +1,31 @@
+{
+  "additional_metadata": null,
+  "argv": [
+    "./interposition/src/main/python/setup.py",
+    "-t",
+    "-n",
+    "akka-raft-fuzz-long"
+  ],
+  "cwd": "/home/rcs/Research/UCB/code/sts2-applications",
+  "host": {
+    "cpu_info": "Intel(R) Xeon(R) CPU X5660 @ 2.80GHz",
+    "free": "total       used       free     shared    buffers     cached\nMem:       6101472    6003200      98272          8       6156     537360\n-/+ buffers/cache:    5459684     641788\nSwap:      6283260     573100    5710160",
+    "name": "c5",
+    "num_cores": "12",
+    "uptime": "21:50:13 up 8 days, 19:20,  0 users,  load average: 1.83, 1.71, 1.48"
+  },
+  "modules": {
+    "sts2": {
+      "branch": "raft-52",
+      "commit": "c0e1fd1d085039a024d9d67d12c97f61a1a30d46",
+      "diff": "",
+      "status": "On branch raft-52\nYour branch is up-to-date with 'origin/raft-52'.\n\nnothing to commit, working directory clean"
+    }
+  },
+  "sys": {
+    "lsb_release": "Ubuntu 14.04.1 LTS",
+    "uname": "Linux c5 3.13.0-49-generic #83-Ubuntu SMP Fri Apr 10 20:11:33 UTC 2015 x86_64 x86_64 x86_64 GNU/Linux"
+  },
+  "timestamp": "2015_08_03_21_50_13",
+  "user": "rcs"
+}
