@@ -1,0 +1,31 @@
+{
+  "additional_metadata": null,
+  "argv": [
+    "./interposition/src/main/python/setup.py",
+    "-t",
+    "-n",
+    "akka-raft-fuzz-long"
+  ],
+  "cwd": "/Users/cs/Research/UCB/code/sts2-applications",
+  "host": {
+    "cpu_info": "",
+    "free": "",
+    "name": "yossarian",
+    "num_cores": "0",
+    "uptime": "21:17  up 8 days, 8 mins, 7 users, load averages: 3.64 2.44 1.91"
+  },
+  "modules": {
+    "sts2": {
+      "branch": "raft-45",
+      "commit": "7fecff5925e76dd0e27c672089e4ca580d11b8db",
+      "diff": "diff --git a/src/main/scala/pl/project13/Runner.scala b/src/main/scala/pl/project13/Runner.scala\nindex a5cce2f..9c98067 100644\n--- a/src/main/scala/pl/project13/Runner.scala\n+++ b/src/main/scala/pl/project13/Runner.scala\n@@ -189,7 +189,8 @@ object Main extends App {\n     val tuple = RunnerUtils.fuzz(fuzzer, raftChecks.invariant,\n                                  schedulerConfig,\n                                  validate_replay=Some(replayerCtor),\n-                                 maxMessages=Some(2000)) // XXX\n+                                 maxMessages=Some(500),  // XXX\n+                                 invariant_check_interval=10)\n     traceFound = tuple._1\n     violationFound = tuple._2\n     depGraph = tuple._3",
+      "status": "On branch raft-45\nYour branch is up-to-date with 'origin/raft-45'.\nChanges not staged for commit:\n  (use \"git add <file>...\" to update what will be committed)\n  (use \"git checkout -- <file>...\" to discard changes in working directory)\n\n\tmodified:   src/main/scala/pl/project13/Runner.scala\n\nno changes added to commit (use \"git add\" and/or \"git commit -a\")"
+    }
+  },
+  "sys": {
+    "lsb_release": "",
+    "uname": "Darwin yossarian 14.4.0 Darwin Kernel Version 14.4.0: Thu May 28 11:35:04 PDT 2015; root:xnu-2782.30.5~1/RELEASE_X86_64 x86_64"
+  },
+  "timestamp": "2015_08_04_21_17_40",
+  "user": "cs"
+}
