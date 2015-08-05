@@ -1,0 +1,31 @@
+{
+  "additional_metadata": null,
+  "argv": [
+    "./interposition/src/main/python/setup.py",
+    "-t",
+    "-n",
+    "akka-raft-fuzz-long"
+  ],
+  "cwd": "/home/rcs/Research/UCB/code/sts2-applications",
+  "host": {
+    "cpu_info": "Intel(R) Xeon(R) CPU X5660 @ 2.80GHz",
+    "free": "total       used       free     shared    buffers     cached\nMem:       6101472     904324    5197148         36      41480     341200\n-/+ buffers/cache:     521644    5579828\nSwap:      6283260     138704    6144556",
+    "name": "c5",
+    "num_cores": "12",
+    "uptime": "22:50:11 up 9 days, 20:19,  2 users,  load average: 0.00, 0.11, 0.29"
+  },
+  "modules": {
+    "sts2": {
+      "branch": "raft-56",
+      "commit": "08f75b25c60fe4c7007986abacf2ac13506f85db",
+      "diff": "diff --git a/src/main/scala/pl/project13/scala/akka/raft/protocol/StateMetadata.scala b/src/main/scala/pl/project13/scala/akka/raft/protocol/StateMetadata.scala\nindex d05790f..27c66ba 100644\n--- a/src/main/scala/pl/project13/scala/akka/raft/protocol/StateMetadata.scala\n+++ b/src/main/scala/pl/project13/scala/akka/raft/protocol/StateMetadata.scala\n@@ -34,7 +34,7 @@ private[protocol] trait StateMetadata extends Serializable {\n     /** A member can only vote once during one Term */\n     def canVoteIn(term: Term, candidate: Candidate) =\n       term >= currentTerm &&\n-      (votes.get(term).isEmpty || votes.get(term) == candidate)\n+      (votes.get(term).isEmpty || votes.get(term).get == candidate)\n \n     /** A member can only vote once during one Term */\n     def cannotVoteIn(term: Term) = term < currentTerm || votes.get(term).isDefined",
+      "status": "On branch raft-56\nChanges not staged for commit:\n  (use \"git add <file>...\" to update what will be committed)\n  (use \"git checkout -- <file>...\" to discard changes in working directory)\n\n\tmodified:   src/main/scala/pl/project13/scala/akka/raft/protocol/StateMetadata.scala\n\nno changes added to commit (use \"git add\" and/or \"git commit -a\")"
+    }
+  },
+  "sys": {
+    "lsb_release": "Ubuntu 14.04.1 LTS",
+    "uname": "Linux c5 3.13.0-49-generic #83-Ubuntu SMP Fri Apr 10 20:11:33 UTC 2015 x86_64 x86_64 x86_64 GNU/Linux"
+  },
+  "timestamp": "2015_08_04_22_50_11",
+  "user": "rcs"
+}
