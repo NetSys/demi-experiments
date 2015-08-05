@@ -1,0 +1,31 @@
+{
+  "additional_metadata": null,
+  "argv": [
+    "./interposition/src/main/python/setup.py",
+    "-t",
+    "-n",
+    "akka-raft-fuzz-long"
+  ],
+  "cwd": "/Users/cs/Research/UCB/code/sts2-applications",
+  "host": {
+    "cpu_info": "",
+    "free": "",
+    "name": "yossarian",
+    "num_cores": "0",
+    "uptime": "21:11  up 8 days, 3 mins, 7 users, load averages: 2.00 1.75 1.58"
+  },
+  "modules": {
+    "sts2": {
+      "branch": "raft-45",
+      "commit": "7fecff5925e76dd0e27c672089e4ca580d11b8db",
+      "diff": "",
+      "status": "On branch raft-45\nYour branch is up-to-date with 'origin/raft-45'.\nnothing to commit, working directory clean"
+    }
+  },
+  "sys": {
+    "lsb_release": "",
+    "uname": "Darwin yossarian 14.4.0 Darwin Kernel Version 14.4.0: Thu May 28 11:35:04 PDT 2015; root:xnu-2782.30.5~1/RELEASE_X86_64 x86_64"
+  },
+  "timestamp": "2015_08_04_21_11_42",
+  "user": "cs"
+}
