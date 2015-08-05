@@ -1,0 +1,30 @@
+{
+  "additional_metadata": null,
+  "argv": [
+    "./interposition/src/main/python/setup.py",
+    "-n",
+    "akka-raft-fuzz-long_2015_08_04_22_00_37_DDMin_STSSchedNoPeek"
+  ],
+  "cwd": "/Users/cs/Research/UCB/code/sts2-applications",
+  "host": {
+    "cpu_info": "",
+    "free": "",
+    "name": "yossarian",
+    "num_cores": "0",
+    "uptime": "22:00  up 8 days, 51 mins, 6 users, load averages: 2.33 1.67 1.60"
+  },
+  "modules": {
+    "sts2": {
+      "branch": "raft-46",
+      "commit": "d742c0f900eeba2b3a509d2f4eda9291e6de0ad7",
+      "diff": "diff --git a/src/main/scala/pl/project13/Runner.scala b/src/main/scala/pl/project13/Runner.scala\nindex 3d93924..1b08e88 100644\n--- a/src/main/scala/pl/project13/Runner.scala\n+++ b/src/main/scala/pl/project13/Runner.scala\n@@ -229,7 +229,7 @@ object Main extends App {\n     RunnerUtils.printMinimizationStats(\n       traceFound, Some(filteredTrace), verified_mcs.get, intMinTrace, schedulerConfig.messageFingerprinter)\n \n-    serializer.recordMinimizedInternals(mcs_dir, intMinStats2, intMinTrace2)\n+    serializer.recordMinimizedInternals(mcs_dir, intMinStats, intMinTrace)\n     println(\"MCS DIR: \" + mcs_dir)\n   } else { // !fuzz\n     val dir =",
+      "status": "On branch raft-46\nYour branch is up-to-date with 'origin/raft-46'.\nChanges not staged for commit:\n  (use \"git add <file>...\" to update what will be committed)\n  (use \"git checkout -- <file>...\" to discard changes in working directory)\n\n\tmodified:   src/main/scala/pl/project13/Runner.scala\n\nno changes added to commit (use \"git add\" and/or \"git commit -a\")"
+    }
+  },
+  "sys": {
+    "lsb_release": "",
+    "uname": "Darwin yossarian 14.4.0 Darwin Kernel Version 14.4.0: Thu May 28 11:35:04 PDT 2015; root:xnu-2782.30.5~1/RELEASE_X86_64 x86_64"
+  },
+  "timestamp": "2015_08_04_22_00_37",
+  "user": "cs"
+}
