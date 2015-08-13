@@ -1,0 +1,30 @@
+{
+  "additional_metadata": null,
+  "argv": [
+    "./interposition/src/main/python/setup.py",
+    "-n",
+    "akka-raft-fuzz-long_2015_08_12_12_18_22_DDMin_STSSchedNoPeek"
+  ],
+  "cwd": "/Users/cs/Research/UCB/code/sts2-applications",
+  "host": {
+    "cpu_info": "",
+    "free": "",
+    "name": "yossarian",
+    "num_cores": "0",
+    "uptime": "12:18  up 6 days, 16:13, 7 users, load averages: 1.88 1.87 1.62"
+  },
+  "modules": {
+    "sts2": {
+      "branch": "raft-42",
+      "commit": "96e0879f1da60d3141bc7bdad28adc25ffda3347",
+      "diff": "diff --git a/src/main/scala/pl/project13/Runner.scala b/src/main/scala/pl/project13/Runner.scala\nindex 42457a6..8df2c93 100644\n--- a/src/main/scala/pl/project13/Runner.scala\n+++ b/src/main/scala/pl/project13/Runner.scala\n@@ -141,7 +141,7 @@ object Main extends App {\n   fingerprintFactory.registerFingerprinter(new RaftMessageFingerprinter)\n \n   // -- Used for initial fuzzing: --\n-  val members = (1 to 4) map { i => s\"raft-member-$i\" }\n+  val members = (1 to 6) map { i => s\"raft-member-$i\" }\n   val prefix = Array[ExternalEvent]() ++\n     members.map(member =>\n       Start(Init.actorCtor, member)) ++\n@@ -224,7 +224,7 @@ object Main extends App {\n   val messageGen = new ClientMessageGenerator(members)\n   val fuzzer = new Fuzzer(60, weights, messageGen, prefix, postfix=postfix)\n \n-  val fuzz = false\n+  val fuzz = true\n \n   var traceFound: EventTrace = null\n   var violationFound: ViolationFingerprint = null\n@@ -244,8 +244,8 @@ object Main extends App {\n     val tuple = RunnerUtils.fuzz(fuzzer, raftChecks.invariant,\n                                  schedulerConfig,\n                                  validate_replay=Some(replayerCtor),\n-                                 maxMessages=Some(400),  // XXX\n-                                 invariant_check_interval=10,\n+                                 maxMessages=Some(600),  // XXX\n+                                 invariant_check_interval=20,\n                                  randomizationStrategyCtor=randomiziationCtor,\n                                  computeProvenance=true)\n     traceFound = tuple._1\n@@ -293,7 +293,7 @@ object Main extends App {\n     println(\"MCS DIR: \" + mcs_dir)\n   } else { // !fuzz\n     val dir =\n-    \"/Users/cs/Research/UCB/code/sts2-applications/experiments/akka-raft-fuzz-long_2015_08_10_20_12_21_DDMin_STSSchedNoPeek\"\n+    \"/Users/cs/Research/UCB/code/sts2-applications/experiments/akka-raft-fuzz-long_2015_08_10_23_24_58_DDMin_STSSchedNoPeek\"\n \n     val msgDeserializer = new RaftMessageDeserializer(Instrumenter()._actorSystem)\n \ndiff --git a/src/main/scala/pl/project13/scala/akka/raft/Follower.scala b/src/main/scala/pl/project13/scala/akka/raft/Follower.scala\nindex b824935..aba5073 100644\n--- a/src/main/scala/pl/project13/scala/akka/raft/Follower.scala\n+++ b/src/main/scala/pl/project13/scala/akka/raft/Follower.scala\n@@ -29,11 +29,32 @@ private[raft] trait Follower {\n     case Event(RequestVote(term, candidate, lastLogTerm, lastLogIndex), m: Meta)\n       if m.canVoteIn(term, candidate) =>\n \n-      log.info(\"Voting for {} in {}\", candidate, term)\n-      sender ! VoteCandidate(m.currentTerm)\n-\n       resetElectionDeadline()\n-      stay() using m.withVote(term, candidate)\n+\n+      // Check if the log is up-to-date before granting vote.\n+      // Raft determines which of two logs is more up-to-date\n+      // by comparing the index and term of the last entries in the\n+      // logs. If the logs have last entries with different terms, then\n+      // the log with the later term is more up-to-date. If the logs\n+      // end with the same term, then whichever log is longer is\n+      // more up-to-date.\n+      if (lastLogTerm < replicatedLog.lastTerm) {\n+        log.info(\"Rejecting vote for {}, and {}. Candidate's lastLogTerm: {} < ours: {}\",\n+          candidate, term, lastLogTerm, replicatedLog.lastTerm)\n+        sender ! DeclineCandidate(m.currentTerm)\n+        stay()\n+      } else if (lastLogTerm == replicatedLog.lastTerm &&\n+                 lastLogIndex < replicatedLog.lastIndex) {\n+        log.info(\"Rejecting vote for {}, and {}. Candidate's lastLogIndex: {} < ours: {}\",\n+          candidate, term, lastLogIndex, replicatedLog.lastIndex)\n+        sender ! DeclineCandidate(m.currentTerm)\n+        stay()\n+      } else {\n+        log.info(\"Voting for {} in {}\", candidate, term)\n+        sender ! VoteCandidate(m.currentTerm)\n+\n+        stay() using m.withVote(term, candidate)\n+      }\n \n     case Event(RequestVote(term, candidateId, lastLogTerm, lastLogIndex), m: Meta) =>\n       log.info(\"Rejecting vote for {}, and {}, currentTerm: {}, already voted for: {}\", candidate(), term, m.currentTerm, m.votes.get(term))\n@@ -139,5 +160,4 @@ private[raft] trait Follower {\n       // simply ignore applying cluster configurations onto the client state machine,\n       // it's an internal thing and the client does not care about cluster config change.\n   }\n-  \n }",
+      "status": "On branch raft-42\nYour branch is up-to-date with 'origin/raft-42'.\nChanges not staged for commit:\n  (use \"git add <file>...\" to update what will be committed)\n  (use \"git checkout -- <file>...\" to discard changes in working directory)\n\n\tmodified:   src/main/scala/pl/project13/Runner.scala\n\tmodified:   src/main/scala/pl/project13/scala/akka/raft/Follower.scala\n\nno changes added to commit (use \"git add\" and/or \"git commit -a\")"
+    }
+  },
+  "sys": {
+    "lsb_release": "",
+    "uname": "Darwin yossarian 14.4.0 Darwin Kernel Version 14.4.0: Thu May 28 11:35:04 PDT 2015; root:xnu-2782.30.5~1/RELEASE_X86_64 x86_64"
+  },
+  "timestamp": "2015_08_12_12_18_28",
+  "user": "cs"
+}
