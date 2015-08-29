@@ -1,0 +1,31 @@
+{
+  "additional_metadata": null,
+  "argv": [
+    "./interposition/src/main/python/setup.py",
+    "-t",
+    "-n",
+    "akka-raft-fuzz-long"
+  ],
+  "cwd": "/Users/cs/Research/UCB/code/sts2-applications",
+  "host": {
+    "cpu_info": "",
+    "free": "",
+    "name": "yossarian",
+    "num_cores": "0",
+    "uptime": "19:01  up 4 days, 16:57, 9 users, load averages: 2.11 1.91 1.88"
+  },
+  "modules": {
+    "sts2": {
+      "branch": "raft-58-initialization",
+      "commit": "31d985d8d122debcbf42495c1bc7ca79e42a7361",
+      "diff": "diff --git a/src/main/scala/pl/project13/Runner.scala b/src/main/scala/pl/project13/Runner.scala\nindex 75b1824..f2c01d4 100644\n--- a/src/main/scala/pl/project13/Runner.scala\n+++ b/src/main/scala/pl/project13/Runner.scala\n@@ -250,7 +250,7 @@ object Main extends App {\n   val messageGen = new ClientMessageGenerator(members)\n   val fuzzer = new Fuzzer(60, weights, messageGen, prefix, postfix=postfix)\n \n-  val fuzz = false\n+  val fuzz = true\n \n   var traceFound: EventTrace = null\n   var violationFound: ViolationFingerprint = null\n@@ -270,8 +270,8 @@ object Main extends App {\n     val tuple = RunnerUtils.fuzz(fuzzer, raftChecks.invariant,\n                                  schedulerConfig,\n                                  validate_replay=Some(replayerCtor),\n-                                 maxMessages=Some(400),  // XXX\n-                                 invariant_check_interval=10,\n+                                 maxMessages=Some(3000),  // XXX\n+                                 invariant_check_interval=30,\n                                  randomizationStrategyCtor=randomiziationCtor,\n                                  computeProvenance=true)\n     traceFound = tuple._1",
+      "status": "On branch raft-58-initialization\nYour branch is up-to-date with 'origin/raft-58-initialization'.\nChanges not staged for commit:\n  (use \"git add <file>...\" to update what will be committed)\n  (use \"git checkout -- <file>...\" to discard changes in working directory)\n\n\tmodified:   src/main/scala/pl/project13/Runner.scala\n\nno changes added to commit (use \"git add\" and/or \"git commit -a\")"
+    }
+  },
+  "sys": {
+    "lsb_release": "",
+    "uname": "Darwin yossarian 14.5.0 Darwin Kernel Version 14.5.0: Wed Jul 29 02:26:53 PDT 2015; root:xnu-2782.40.9~1/RELEASE_X86_64 x86_64"
+  },
+  "timestamp": "2015_08_28_19_01_08",
+  "user": "cs"
+}
