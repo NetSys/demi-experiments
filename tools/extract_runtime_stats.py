@@ -17,7 +17,10 @@ def sum_replays(lst):
 def sum_runtime(lst):
   return sum(lst, lambda o: o["prune_duration_seconds"])
 
-def print_stats():
+def print_stats(lst):
+  print("Runtime: %0.2f, Replays: %d" % (sum_runtime(subseq), sum_replays(subseq)))
+
+if __name__ == "__main__":
   parser = argparse.ArgumentParser()
   parser.add_argument('-s', '--start_index', type=int,
     default=0,
@@ -32,8 +35,4 @@ def print_stats():
   lst = parse(args.path)
   end_idx = len(lst) if (args.end_index == -1) else args.end_index
   subseq = lst[args.start_index:end_idx]
-
-  print("Runtime: %0.2f, Replays: %d" % (sum_runtime(subseq), sum_replays(subseq)))
-
-if __name__ == "__main__":
-  print_stats()
+  print_stats(subseq)
