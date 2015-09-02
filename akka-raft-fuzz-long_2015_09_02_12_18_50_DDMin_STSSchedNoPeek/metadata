@@ -1,0 +1,30 @@
+{
+  "additional_metadata": null,
+  "argv": [
+    "./interposition/src/main/python/setup.py",
+    "-n",
+    "akka-raft-fuzz-long_2015_09_02_12_18_50_DDMin_STSSchedNoPeek"
+  ],
+  "cwd": "/Users/cs/Research/UCB/code/sts2-applications",
+  "host": {
+    "cpu_info": "",
+    "free": "",
+    "name": "yossarian",
+    "num_cores": "0",
+    "uptime": "12:18  up 9 days, 10:15, 8 users, load averages: 3.24 2.22 1.79"
+  },
+  "modules": {
+    "sts2": {
+      "branch": "raft-45",
+      "commit": "4895fe63f9a11a6454a2dd7e87c72029ee51206a",
+      "diff": "diff --git a/src/main/scala/pl/project13/Runner.scala b/src/main/scala/pl/project13/Runner.scala\nindex 8e42e69..b089f0d 100644\n--- a/src/main/scala/pl/project13/Runner.scala\n+++ b/src/main/scala/pl/project13/Runner.scala\n@@ -80,14 +80,14 @@ class RaftMessageFingerprinter extends MessageFingerprinter {\n   }\n }\n \n-class ClientMessageGenerator(raft_members: Seq[String]) extends MessageGenerator {\n-  class AppendWordConstuctor(word: String) extends ExternalMessageConstructor {\n-    def apply() : Any = {\n-      return ClientMessage[AppendWord](Instrumenter().actorSystem.deadLetters, AppendWord(word))\n-    }\n+class AppendWordConstuctor(word: String) extends ExternalMessageConstructor {\n+  def apply() : Any = {\n+    return ClientMessage[AppendWord](Instrumenter().actorSystem.deadLetters, AppendWord(word))\n   }\n+}\n \n-  val wordsUsedSoFar = new HashSet[String]\n+class ClientMessageGenerator(raft_members: Seq[String]) extends MessageGenerator {\n+  var highestWordUsedSoFar = 0\n   val rand = new Random\n   val destinations = new RandomizedHashSet[String]\n   for (dst <- raft_members) {\n@@ -96,13 +96,8 @@ class ClientMessageGenerator(raft_members: Seq[String]) extends MessageGenerator\n \n   def generateMessage(alive: RandomizedHashSet[String]) : Send = {\n     val dst = destinations.getRandomElement()\n-    // TODO(cs): 10000 is a bit arbitrary, and this algorithm fails\n-    // disastrously as we start to approach 10000 Send events.\n-    var word = rand.nextInt(10000).toString\n-    while (wordsUsedSoFar contains word) {\n-      word = rand.nextInt(10000).toString\n-    }\n-    wordsUsedSoFar += word\n+    var word = highestWordUsedSoFar.toString\n+    highestWordUsedSoFar += 1\n     return Send(dst, new AppendWordConstuctor(word))\n   }\n }\n@@ -201,9 +196,9 @@ object Main extends App {\n   val weights = new FuzzerWeights(kill=0.00, send=0.3, wait_quiescence=0.0,\n                                   partition=0.0, unpartition=0)\n   val messageGen = new ClientMessageGenerator(members)\n-  val fuzzer = new Fuzzer(0, weights, messageGen, prefix)\n+  val fuzzer = new Fuzzer(100, weights, messageGen, prefix)\n \n-  val fuzz = false\n+  val fuzz = true\n \n   var traceFound: EventTrace = null\n   var violationFound: ViolationFingerprint = null\n@@ -244,14 +239,16 @@ object Main extends App {\n       depGraph=Some(depGraph), initialTrace=Some(initialTrace),\n       filteredTrace=Some(filteredTrace))\n \n-    val (mcs, stats, verified_mcs, violation) =\n+    val (mcs, stats1, verified_mcs, violation) =\n     RunnerUtils.stsSchedDDMin(false,\n       schedulerConfig,\n       provenanceTrace,\n       violationFound,\n       actorNameProps=Some(ExperimentSerializer.getActorNameProps(traceFound)))\n \n-    val mcs_dir = serializer.serializeMCS(dir, mcs, stats, verified_mcs, violation, false)\n+    val mcs_dir = serializer.serializeMCS(dir, mcs, stats1, verified_mcs, violation, false)\n+    println(\"verified_mcs.size: \" +\n+      RunnerUtils.getDeliveries(verified_mcs.get).size)\n     println(\"MCS DIR: \" + mcs_dir)\n   } else { // !fuzz\n     val dir =",
+      "status": "On branch raft-45\nYour branch is ahead of 'origin/raft-45' by 29 commits.\n  (use \"git push\" to publish your local commits)\nChanges to be committed:\n  (use \"git reset HEAD <file>...\" to unstage)\n\n\tmodified:   src/main/scala/pl/project13/Runner.scala\n\nChanges not staged for commit:\n  (use \"git add <file>...\" to update what will be committed)\n  (use \"git checkout -- <file>...\" to discard changes in working directory)\n\n\tmodified:   src/main/scala/pl/project13/Runner.scala"
+    }
+  },
+  "sys": {
+    "lsb_release": "",
+    "uname": "Darwin yossarian 14.5.0 Darwin Kernel Version 14.5.0: Wed Jul 29 02:26:53 PDT 2015; root:xnu-2782.40.9~1/RELEASE_X86_64 x86_64"
+  },
+  "timestamp": "2015_09_02_12_18_52",
+  "user": "cs"
+}
