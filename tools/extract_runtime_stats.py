@@ -17,8 +17,14 @@ def sum_replays(lst):
 def sum_runtime(lst):
   return sum(lst, lambda o: o["prune_duration_seconds"])
 
-def print_stats(lst):
+def print_runtime_stats(lst):
   print("Runtime: %0.2f, Replays: %d" % (sum_runtime(lst), sum_replays(lst)))
+
+def get_deliveries(o):
+  return o["minimized_deliveries"]
+
+def get_externals(o):
+  return o["minimized_externals"]
 
 if __name__ == "__main__":
   parser = argparse.ArgumentParser()
@@ -35,4 +41,4 @@ if __name__ == "__main__":
   lst = parse(args.path)
   end_idx = len(lst) if (args.end_index == -1) else args.end_index
   subseq = lst[args.start_index:end_idx]
-  print_stats(subseq)
+  print_runtime_stats(subseq)
