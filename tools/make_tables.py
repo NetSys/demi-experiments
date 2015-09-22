@@ -10,7 +10,8 @@ experiments = [
   ("raft-58-init", "akka-raft-fuzz-long_2015_09_02_13_25_20_DDMin_STSSchedNoPeek"),
   ("raft-58-log-match", "akka-raft-fuzz-long_2015_08_30_20_59_21_DDMin_STSSchedNoPeek"),
   ("raft-42", "akka-raft-fuzz-long_2015_08_30_21_57_21_DDMin_STSSchedNoPeek"),
-  ("raft-66", "akka-raft-fuzz-long_2015_08_12_23_55_04_DDMin_STSSchedNoPeek")
+  ("raft-66", "akka-raft-fuzz-long_2015_08_12_23_55_04_DDMin_STSSchedNoPeek"),
+  ("spark-2294-blocks", "spark-fuzz_2015_09_21_17_53_01_DDMin_STSSchedNoPeek")
 ]
 
 NUM_NODES = 4
