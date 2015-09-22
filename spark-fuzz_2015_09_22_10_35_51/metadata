@@ -1,0 +1,31 @@
+{
+  "additional_metadata": null,
+  "argv": [
+    "./../../../../.././interposition/src/main/python/setup.py",
+    "-t",
+    "-n",
+    "spark-fuzz"
+  ],
+  "cwd": "/Users/cs/Research/UCB/code/sts2-applications",
+  "host": {
+    "cpu_info": "",
+    "free": "",
+    "name": "yossarian",
+    "num_cores": "0",
+    "uptime": "10:35  up 5 days, 13:27, 8 users, load averages: 2.37 2.13 1.80"
+  },
+  "modules": {
+    "sts2": {
+      "branch": "spark-2294",
+      "commit": "4359e26191855edf99304e5440e3a12e0fdfbdeb",
+      "diff": "diff --git a/src/main/scala/spark/examples/src/main/scala/org/apache/spark/examples/STSSparkPi.scala b/src/main/scala/spark/examples/src/main/scala/org/apache/spark/examples/STSSparkPi.scala\nindex 2e04796..c242005 100644\n--- a/src/main/scala/spark/examples/src/main/scala/org/apache/spark/examples/STSSparkPi.scala\n+++ b/src/main/scala/spark/examples/src/main/scala/org/apache/spark/examples/STSSparkPi.scala\n@@ -93,7 +93,7 @@ class SparkMessageFingerprinter extends MessageFingerprinter {\n       //  s\n       case m =>\n         \"\"\n-    }\n+    \n \n     if (str != \"\") {\n       return Some(BasicFingerprint(str))",
+      "status": "On branch spark-2294\nYour branch is up-to-date with 'origin/spark-2294'.\nChanges not staged for commit:\n  (use \"git add <file>...\" to update what will be committed)\n  (use \"git checkout -- <file>...\" to discard changes in working directory)\n\n\tmodified:   src/main/scala/spark/examples/src/main/scala/org/apache/spark/examples/STSSparkPi.scala\n\nno changes added to commit (use \"git add\" and/or \"git commit -a\")"
+    }
+  },
+  "sys": {
+    "lsb_release": "",
+    "uname": "Darwin yossarian 14.5.0 Darwin Kernel Version 14.5.0: Wed Jul 29 02:26:53 PDT 2015; root:xnu-2782.40.9~1/RELEASE_X86_64 x86_64"
+  },
+  "timestamp": "2015_09_22_10_35_51",
+  "user": "cs"
+}
