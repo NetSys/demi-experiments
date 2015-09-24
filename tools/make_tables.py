@@ -13,7 +13,8 @@ experiments = [
   ("raft-66", "akka-raft-fuzz-long_2015_08_12_23_55_04_DDMin_STSSchedNoPeek"),
   ("spark-2294", "spark-fuzz_2015_09_22_10_35_51_DDMin_STSSchedNoPeek"),
   ("spark-2294-blocks", "spark-fuzz_2015_09_21_17_53_01_DDMin_STSSchedNoPeek"),
-  ("spark-3150", "spark-fuzz_2015_09_22_12_36_30_DDMin_STSSchedNoPeek")
+  ("spark-3150", "spark-fuzz_2015_09_22_12_36_30_DDMin_STSSchedNoPeek"),
+  ("spark-9256", "spark-fuzz_2015_09_15_20_44_06_DDMin_STSSchedNoPeek")
 ]
 
 NUM_NODES = 4
