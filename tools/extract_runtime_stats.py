@@ -42,3 +42,6 @@ if __name__ == "__main__":
   end_idx = len(lst) if (args.end_index == -1) else args.end_index
   subseq = lst[args.start_index:end_idx]
   print_runtime_stats(subseq)
+
+  print("Minimized internal events: %d, external events: %d" %
+      (get_deliveries(lst[-1]), get_externals(lst[-1])))
