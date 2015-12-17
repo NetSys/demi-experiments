@@ -17,8 +17,16 @@ a = [
 def reduction(total, new):
   return ((total * 1.0) - new) / total
 
+sts_reductions = []
+us_reductions = []
 for (orig,sts,us) in a:
   sts_reduction = reduction(orig, sts)
+  sts_reductions.append(sts_reduction)
   us_reduction = reduction(orig, us)
+  us_reductions.append(us_reduction)
   factor = sts * 1.0 / us
   print "%f %f %f" % (sts_reduction, us_reduction, factor)
+
+print
+print "STS median: ", sorted(sts_reductions)[len(a) / 2]
+print "US median: ", sorted(us_reductions)[len(a) / 2]
