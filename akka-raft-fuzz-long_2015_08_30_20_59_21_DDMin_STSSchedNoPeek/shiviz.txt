@@ -1,0 +1,71 @@
+(?<clock>.*\}) (?<host>[^:]*): (?<event>.*)
+
+{"raft-member-2" : 1} raft-member-2: Received external message: ChangeConfiguration(StableRaftConfiguration(Set(raft-member-1, raft-member-2, raft-member-3, raft-member-4)))
+{"raft-member-3" : 1} raft-member-3: Received external message: ChangeConfiguration(StableRaftConfiguration(Set(raft-member-1, raft-member-2, raft-member-3, raft-member-4)))
+{"raft-member-2" : 2} raft-member-2: Received external message: Timer(election-timer,ElectionTimeout,false,1)
+{"raft-member-2" : 3} raft-member-2: Received external message: Timer(election-timer,ElectionTimeout,false,3)
+{"raft-member-1" : 1} raft-member-1: Received external message: ChangeConfiguration(StableRaftConfiguration(Set(raft-member-1, raft-member-2, raft-member-3, raft-member-4)))
+{"raft-member-2" : 4} raft-member-2: Sending to raft-member-2: BeginElection
+{"raft-member-2" : 5} raft-member-2: Received message from raft-member-2: BeginElection
+{"raft-member-2" : 6} raft-member-2: Sending to raft-member-2: BeginElection
+{"raft-member-2" : 7} raft-member-2: Received message from raft-member-2: BeginElection
+{"raft-member-2" : 8} raft-member-2: Sending to raft-member-3: RequestVote(Term(2),Actor[akka://new-system-25454/user/raft-member-2#-411094810],Term(0),0)
+{"raft-member-2" : 8, "raft-member-3" : 2} raft-member-3: Received message from raft-member-2: RequestVote(Term(2),Actor[akka://new-system-25454/user/raft-member-2#-411094810],Term(0),0)
+{"raft-member-2" : 9} raft-member-2: Sending to raft-member-3: RequestVote(Term(2),Actor[akka://new-system-25454/user/raft-member-2#-411094810],Term(0),0)
+{"raft-member-2" : 9, "raft-member-3" : 3} raft-member-3: Received message from raft-member-2: RequestVote(Term(2),Actor[akka://new-system-25454/user/raft-member-2#-411094810],Term(0),0)
+{"raft-member-2" : 9, "raft-member-3" : 4} raft-member-3: Sending to raft-member-2: VoteCandidate(Term(2))
+{"raft-member-2" : 10, "raft-member-3" : 4} raft-member-2: Received message from raft-member-3: VoteCandidate(Term(2))
+{"raft-member-2" : 11, "raft-member-3" : 4} raft-member-2: Sending to raft-member-1: RequestVote(Term(2),Actor[akka://new-system-25454/user/raft-member-2#-411094810],Term(0),0)
+{"raft-member-1" : 2, "raft-member-2" : 11, "raft-member-3" : 4} raft-member-1: Received message from raft-member-2: RequestVote(Term(2),Actor[akka://new-system-25454/user/raft-member-2#-411094810],Term(0),0)
+{"raft-member-2" : 12, "raft-member-3" : 4} raft-member-2: Sending to raft-member-1: RequestVote(Term(2),Actor[akka://new-system-25454/user/raft-member-2#-411094810],Term(0),0)
+{"raft-member-1" : 3, "raft-member-2" : 12, "raft-member-3" : 4} raft-member-1: Received message from raft-member-2: RequestVote(Term(2),Actor[akka://new-system-25454/user/raft-member-2#-411094810],Term(0),0)
+{"raft-member-1" : 4, "raft-member-2" : 12, "raft-member-3" : 4} raft-member-1: Sending to raft-member-2: VoteCandidate(Term(2))
+{"raft-member-1" : 4, "raft-member-2" : 13, "raft-member-3" : 4} raft-member-2: Received message from raft-member-1: VoteCandidate(Term(2))
+{"raft-member-1" : 4, "raft-member-2" : 14, "raft-member-3" : 4} raft-member-2: Received external message: ClientMessage(Actor[akka://new-system-25454/deadLetters],AppendWord(6224))
+{"raft-member-1" : 4, "raft-member-2" : 15, "raft-member-3" : 4} raft-member-2: Sending to raft-member-1: AppendEntries(term:Term(2),prevLog:(Term(0),0),entries:List(Entry(AppendWord(6224),Term(2),0,Some(Actor[akka://new-system-25454/deadLetters]))))
+{"raft-member-1" : 5, "raft-member-2" : 15, "raft-member-3" : 4} raft-member-1: Received message from raft-member-2: AppendEntries(term:Term(2),prevLog:(Term(0),0),entries:List(Entry(AppendWord(6224),Term(2),0,Some(Actor[akka://new-system-25454/deadLetters]))))
+{"raft-member-1" : 4, "raft-member-2" : 16, "raft-member-3" : 4} raft-member-2: Sending to raft-member-2: ElectedAsLeader
+{"raft-member-1" : 4, "raft-member-2" : 17, "raft-member-3" : 4} raft-member-2: Received message from raft-member-2: ElectedAsLeader
+{"raft-member-2" : 9, "raft-member-3" : 5} raft-member-3: Received external message: Timer(election-timer,ElectionTimeout,false,1)
+{"raft-member-1" : 6, "raft-member-2" : 15, "raft-member-3" : 4} raft-member-1: Sending to raft-member-2: AppendSuccessful(Term(2),0)
+{"raft-member-1" : 6, "raft-member-2" : 18, "raft-member-3" : 4} raft-member-2: Received message from raft-member-1: AppendSuccessful(Term(2),0)
+{"raft-member-1" : 6, "raft-member-2" : 19, "raft-member-3" : 4} raft-member-2: Sending to raft-member-1: AppendEntries(term:Term(2),prevLog:(Term(0),0),entries:List(Entry(AppendWord(6224),Term(2),0,Some(Actor[akka://new-system-25454/deadLetters]))))
+{"raft-member-1" : 7, "raft-member-2" : 19, "raft-member-3" : 4} raft-member-1: Received message from raft-member-2: AppendEntries(term:Term(2),prevLog:(Term(0),0),entries:List(Entry(AppendWord(6224),Term(2),0,Some(Actor[akka://new-system-25454/deadLetters]))))
+{"raft-member-2" : 9, "raft-member-3" : 6} raft-member-3: Sending to raft-member-3: BeginElection
+{"raft-member-2" : 9, "raft-member-3" : 7} raft-member-3: Received message from raft-member-3: BeginElection
+{"raft-member-1" : 8, "raft-member-2" : 19, "raft-member-3" : 4} raft-member-1: Sending to raft-member-2: AppendSuccessful(Term(2),0)
+{"raft-member-1" : 8, "raft-member-2" : 20, "raft-member-3" : 4} raft-member-2: Received message from raft-member-1: AppendSuccessful(Term(2),0)
+{"raft-member-1" : 8, "raft-member-2" : 21, "raft-member-3" : 4} raft-member-2: Received external message: ClientMessage(Actor[akka://new-system-25454/deadLetters],AppendWord(6214))
+{"raft-member-1" : 8, "raft-member-2" : 22, "raft-member-3" : 4} raft-member-2: Sending to raft-member-3: AppendEntries(term:Term(2),prevLog:(Term(0),0),entries:List(Entry(AppendWord(6224),Term(2),0,Some(Actor[akka://new-system-25454/deadLetters]))))
+{"raft-member-1" : 8, "raft-member-2" : 22, "raft-member-3" : 8} raft-member-3: Received message from raft-member-2: AppendEntries(term:Term(2),prevLog:(Term(0),0),entries:List(Entry(AppendWord(6224),Term(2),0,Some(Actor[akka://new-system-25454/deadLetters]))))
+{"raft-member-1" : 8, "raft-member-2" : 23, "raft-member-3" : 4} raft-member-2: Sending to raft-member-1: AppendEntries(term:Term(2),prevLog:(Term(0),0),entries:List(Entry(AppendWord(6224),Term(2),0,Some(Actor[akka://new-system-25454/deadLetters])), Entry(AppendWord(6214),Term(2),1,Some(Actor[akka://new-system-25454/deadLetters]))))
+{"raft-member-1" : 9, "raft-member-2" : 23, "raft-member-3" : 4} raft-member-1: Received message from raft-member-2: AppendEntries(term:Term(2),prevLog:(Term(0),0),entries:List(Entry(AppendWord(6224),Term(2),0,Some(Actor[akka://new-system-25454/deadLetters])), Entry(AppendWord(6214),Term(2),1,Some(Actor[akka://new-system-25454/deadLetters]))))
+{"raft-member-1" : 8, "raft-member-2" : 22, "raft-member-3" : 9} raft-member-3: Sending to raft-member-2: RequestVote(Term(3),Actor[akka://new-system-25454/user/raft-member-3#528892441],Term(0),0)
+{"raft-member-1" : 8, "raft-member-2" : 24, "raft-member-3" : 9} raft-member-2: Received message from raft-member-3: RequestVote(Term(3),Actor[akka://new-system-25454/user/raft-member-3#528892441],Term(0),0)
+{"raft-member-1" : 10, "raft-member-2" : 23, "raft-member-3" : 4} raft-member-1: Sending to raft-member-2: AppendSuccessful(Term(2),1)
+{"raft-member-1" : 10, "raft-member-2" : 25, "raft-member-3" : 9} raft-member-2: Received message from raft-member-1: AppendSuccessful(Term(2),1)
+{"raft-member-1" : 10, "raft-member-2" : 26, "raft-member-3" : 9} raft-member-2: Sending to raft-member-3: AppendEntries(term:Term(2),prevLog:(Term(0),0),entries:List(Entry(AppendWord(6224),Term(2),0,Some(Actor[akka://new-system-25454/deadLetters]))))
+{"raft-member-1" : 10, "raft-member-2" : 26, "raft-member-3" : 10} raft-member-3: Received message from raft-member-2: AppendEntries(term:Term(2),prevLog:(Term(0),0),entries:List(Entry(AppendWord(6224),Term(2),0,Some(Actor[akka://new-system-25454/deadLetters]))))
+{"raft-member-1" : 10, "raft-member-2" : 27, "raft-member-3" : 9} raft-member-2: Sending to raft-member-3: AppendEntries(term:Term(2),prevLog:(Term(0),0),entries:List(Entry(AppendWord(6224),Term(2),0,Some(Actor[akka://new-system-25454/deadLetters])), Entry(AppendWord(6214),Term(2),1,Some(Actor[akka://new-system-25454/deadLetters]))))
+{"raft-member-1" : 10, "raft-member-2" : 27, "raft-member-3" : 11} raft-member-3: Received message from raft-member-2: AppendEntries(term:Term(2),prevLog:(Term(0),0),entries:List(Entry(AppendWord(6224),Term(2),0,Some(Actor[akka://new-system-25454/deadLetters])), Entry(AppendWord(6214),Term(2),1,Some(Actor[akka://new-system-25454/deadLetters]))))
+{"raft-member-1" : 10, "raft-member-2" : 27, "raft-member-3" : 12} raft-member-3: Sending to raft-member-1: RequestVote(Term(3),Actor[akka://new-system-25454/user/raft-member-3#528892441],Term(0),0)
+{"raft-member-1" : 11, "raft-member-2" : 27, "raft-member-3" : 12} raft-member-1: Received message from raft-member-3: RequestVote(Term(3),Actor[akka://new-system-25454/user/raft-member-3#528892441],Term(0),0)
+{"raft-member-1" : 10, "raft-member-2" : 28, "raft-member-3" : 9} raft-member-2: Received external message: Timer(election-timer,ElectionTimeout,false,5)
+{"raft-member-1" : 12, "raft-member-2" : 27, "raft-member-3" : 12} raft-member-1: Received external message: Timer(election-timer,ElectionTimeout,false,4)
+{"raft-member-1" : 10, "raft-member-2" : 27, "raft-member-3" : 13} raft-member-3: Received external message: Timer(election-timer,ElectionTimeout,false,3)
+{"raft-member-1" : 10, "raft-member-2" : 29, "raft-member-3" : 9} raft-member-2: Sending to raft-member-2: BeginElection
+{"raft-member-1" : 10, "raft-member-2" : 30, "raft-member-3" : 9} raft-member-2: Received message from raft-member-2: BeginElection
+{"raft-member-1" : 10, "raft-member-2" : 31, "raft-member-3" : 9} raft-member-2: Sending to raft-member-1: RequestVote(Term(4),Actor[akka://new-system-25454/user/raft-member-2#-411094810],Term(2),1)
+{"raft-member-1" : 13, "raft-member-2" : 31, "raft-member-3" : 12} raft-member-1: Received message from raft-member-2: RequestVote(Term(4),Actor[akka://new-system-25454/user/raft-member-2#-411094810],Term(2),1)
+{"raft-member-1" : 10, "raft-member-2" : 32, "raft-member-3" : 9} raft-member-2: Sending to raft-member-3: RequestVote(Term(4),Actor[akka://new-system-25454/user/raft-member-2#-411094810],Term(2),1)
+{"raft-member-1" : 10, "raft-member-2" : 32, "raft-member-3" : 14} raft-member-3: Received message from raft-member-2: RequestVote(Term(4),Actor[akka://new-system-25454/user/raft-member-2#-411094810],Term(2),1)
+{"raft-member-1" : 14, "raft-member-2" : 31, "raft-member-3" : 12} raft-member-1: Sending to raft-member-2: VoteCandidate(Term(4))
+{"raft-member-1" : 14, "raft-member-2" : 33, "raft-member-3" : 12} raft-member-2: Received message from raft-member-1: VoteCandidate(Term(4))
+{"raft-member-1" : 10, "raft-member-2" : 32, "raft-member-3" : 15} raft-member-3: Sending to raft-member-2: VoteCandidate(Term(4))
+{"raft-member-1" : 14, "raft-member-2" : 34, "raft-member-3" : 15} raft-member-2: Received message from raft-member-3: VoteCandidate(Term(4))
+{"raft-member-1" : 14, "raft-member-2" : 35, "raft-member-3" : 15} raft-member-2: Sending to raft-member-2: ElectedAsLeader
+{"raft-member-1" : 14, "raft-member-2" : 36, "raft-member-3" : 15} raft-member-2: Received message from raft-member-2: ElectedAsLeader
+{"raft-member-1" : 14, "raft-member-2" : 37, "raft-member-3" : 15} raft-member-2: Sending to raft-member-3: AppendEntries(term:Term(4),prevLog:(Term(0),0),entries:List(Entry(AppendWord(6214),Term(2),1,Some(Actor[akka://new-system-25454/deadLetters]))))
+{"raft-member-1" : 14, "raft-member-2" : 37, "raft-member-3" : 16} raft-member-3: Received message from raft-member-2: AppendEntries(term:Term(4),prevLog:(Term(0),0),entries:List(Entry(AppendWord(6214),Term(2),1,Some(Actor[akka://new-system-25454/deadLetters]))))
+{"raft-member-1" : 14, "raft-member-2" : 38, "raft-member-3" : 15} raft-member-2: Sending to raft-member-3: AppendEntries(term:Term(4),prevLog:(Term(0),0),entries:List(Entry(AppendWord(6214),Term(2),1,Some(Actor[akka://new-system-25454/deadLetters]))))
+{"raft-member-1" : 14, "raft-member-2" : 38, "raft-member-3" : 17} raft-member-3: Received message from raft-member-2: AppendEntries(term:Term(4),prevLog:(Term(0),0),entries:List(Entry(AppendWord(6214),Term(2),1,Some(Actor[akka://new-system-25454/deadLetters]))))
