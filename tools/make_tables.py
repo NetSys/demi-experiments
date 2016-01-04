@@ -17,6 +17,9 @@ experiments = [
   ("spark-9256", "spark-fuzz_2015_09_15_20_44_06_DDMin_STSSchedNoPeek")
 ]
 
+# Optimal runs:
+#  ("raft-45-opt", "akka-raft-interactive_2016_01_03_15_13_24"),
+
 NUM_NODES = 4
 
 print("--- minimization ---")
