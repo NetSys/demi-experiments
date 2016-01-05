@@ -4,8 +4,8 @@ from extract_runtime_stats import *
 
 # long runs:
 experiments = [
-  ("raft-45", "akka-raft-fuzz-long_2015_09_02_12_18_50_DDMin_STSSchedNoPeek"),
-  ("raft-46", "akka-raft-fuzz-long_2015_09_02_12_36_41_DDMin_STSSchedNoPeek"),
+  ("raft-45", "akka-raft-fuzz-long_2016_01_03_20_36_00_DDMin_STSSchedNoPeek"), # "akka-raft-fuzz-long_2015_09_02_12_18_50_DDMin_STSSchedNoPeek"
+  ("raft-46", "akka-raft-fuzz-long_2016_01_04_18_51_13_DDMin_STSSchedNoPeek"), # "akka-raft-fuzz-long_2015_09_02_12_36_41_DDMin_STSSchedNoPeek"
   ("raft-56", "akka-raft-fuzz-long_2015_09_02_12_48_32_DDMin_STSSchedNoPeek"),
   ("raft-58-init", "akka-raft-fuzz-long_2015_09_02_13_25_20_DDMin_STSSchedNoPeek"),
   ("raft-58-log-match", "akka-raft-fuzz-long_2015_08_30_20_59_21_DDMin_STSSchedNoPeek"),

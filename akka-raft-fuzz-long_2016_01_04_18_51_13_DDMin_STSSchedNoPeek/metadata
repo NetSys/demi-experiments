@@ -1,0 +1,30 @@
+{
+  "additional_metadata": null,
+  "argv": [
+    "././interposition/src/main/python/setup.py",
+    "-n",
+    "akka-raft-fuzz-long_2016_01_04_18_51_13_DDMin_STSSchedNoPeek"
+  ],
+  "cwd": "/Users/cs/Research/UCB/code/demi-applications",
+  "host": {
+    "cpu_info": "",
+    "free": "",
+    "name": "yossarian",
+    "num_cores": "0",
+    "uptime": "18:51  up  7:51, 6 users, load averages: 3.61 2.19 1.98"
+  },
+  "modules": {
+    "sts2": {
+      "branch": "raft-46",
+      "commit": "5058648c98216a032c739faf853522a3f9f7c489",
+      "diff": "diff --git a/src/main/resources/logback.xml b/src/main/resources/logback.xml\nindex 94f3de7..632207f 100644\n--- a/src/main/resources/logback.xml\n+++ b/src/main/resources/logback.xml\n@@ -6,7 +6,7 @@\n     </encoder>\n   </appender>\n \n-  <root level=\"ERROR\">\n+  <root level=\"DEBUG\">\n     <appender-ref ref=\"STDOUT\" />\n   </root>\n </configuration>\ndiff --git a/src/main/scala/pl/project13/Runner.scala b/src/main/scala/pl/project13/Runner.scala\nindex 5070149..fa9d2b4 100644\n--- a/src/main/scala/pl/project13/Runner.scala\n+++ b/src/main/scala/pl/project13/Runner.scala\n@@ -155,7 +155,7 @@ object Init {\n }\n \n object Main extends App {\n-  Instrumenter().setLogLevel(\"ERROR\")\n+  Instrumenter().setLogLevel(\"DEBUG\")\n \n   EventTypes.setExternalMessageFilter(Init.externalMessageFilter)\n   Instrumenter().setPassthrough\n@@ -199,7 +199,7 @@ object Main extends App {\n   val messageGen = new ClientMessageGenerator(members)\n   val fuzzer = new Fuzzer(100, weights, messageGen, prefix)\n \n-  val fuzz = false\n+  val fuzz = true\n \n   var traceFound: EventTrace = null\n   var violationFound: ViolationFingerprint = null\n@@ -214,6 +214,7 @@ object Main extends App {\n     }\n     def randomizationStrategy() : RandomizationStrategy = {\n       return new SrcDstFIFO\n+      //return new FullyRandom\n     }\n     val tuple = RunnerUtils.fuzz(fuzzer, raftChecks.invariant,\n                                  schedulerConfig,\n@@ -258,13 +259,42 @@ object Main extends App {\n     val msgSerializer = new RaftMessageSerializer\n     val msgDeserializer = new RaftMessageDeserializer(Instrumenter()._actorSystem)\n \n-    def shouldRerunDDMin(externals: Seq[ExternalEvent]) =\n-      externals.exists({\n-        case s: Send => s.messageCtor.isInstanceOf[AppendWordConstuctor]\n-        case _ => false\n-      })\n+    val deserializer = new ExperimentDeserializer(mcs_dir)\n+    val violation = deserializer.get_violation(msgDeserializer)\n+    val externals = deserializer.get_mcs\n \n-    RunnerUtils.runTheGamut(dir, mcs_dir, schedulerConfig, msgSerializer,\n-      msgDeserializer, shouldRerunDDMin=shouldRerunDDMin)\n+    println(\"externals:\")\n+    externals.foreach { case e => println(e) }\n+\n+    // TODO(cs): put me in RunnerUtils, along with recording.\n+    val sched = new InteractiveScheduler(schedulerConfig)\n+    Instrumenter().scheduler = sched\n+    val (trace, maybeViolation) = sched.run(externals)\n+\n+    val serializer = new ExperimentSerializer(\n+      fingerprintFactory,\n+      msgSerializer)\n+\n+    val new_dir = serializer.record_experiment(\"akka-raft-interactive\",\n+      trace.filterCheckpointMessages())\n+\n+    //serializer.recordMinimizationStats(dir, stats)\n+\n+    println(\"Found failing trace: \" + trace.filterCheckpointMessages().size)\n+    println(\"Saved trace at \" + new_dir)\n+\n+    // ----\n+\n+    //val msgSerializer = new RaftMessageSerializer\n+    //val msgDeserializer = new RaftMessageDeserializer(Instrumenter()._actorSystem)\n+\n+    //def shouldRerunDDMin(externals: Seq[ExternalEvent]) =\n+    //  externals.exists({\n+    //    case s: Send => s.messageCtor.isInstanceOf[AppendWordConstuctor]\n+    //    case _ => false\n+    //  })\n+\n+    //RunnerUtils.runTheGamut(dir, mcs_dir, schedulerConfig, msgSerializer,\n+    //  msgDeserializer, shouldRerunDDMin=shouldRerunDDMin)\n   }\n }",
+      "status": "On branch raft-46\nYour branch and 'origin/raft-46' have diverged,\nand have 3 and 1 different commit each, respectively.\n  (use \"git pull\" to merge the remote branch into yours)\nChanges not staged for commit:\n  (use \"git add <file>...\" to update what will be committed)\n  (use \"git checkout -- <file>...\" to discard changes in working directory)\n\n\tmodified:   src/main/resources/logback.xml\n\tmodified:   src/main/scala/pl/project13/Runner.scala\n\nno changes added to commit (use \"git add\" and/or \"git commit -a\")"
+    }
+  },
+  "sys": {
+    "lsb_release": "",
+    "uname": "Darwin yossarian 14.5.0 Darwin Kernel Version 14.5.0: Tue Sep  1 21:23:09 PDT 2015; root:xnu-2782.50.1~1/RELEASE_X86_64 x86_64"
+  },
+  "timestamp": "2016_01_04_18_51_21",
+  "user": "cs"
+}
