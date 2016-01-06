@@ -1,0 +1,30 @@
+{
+  "additional_metadata": null,
+  "argv": [
+    "././interposition/src/main/python/setup.py",
+    "-n",
+    "akka-raft-fuzz-long_2016_01_05_17_18_39_DDMin_STSSchedNoPeek"
+  ],
+  "cwd": "/Users/cs/Research/UCB/code/demi-applications",
+  "host": {
+    "cpu_info": "",
+    "free": "",
+    "name": "yossarian",
+    "num_cores": "0",
+    "uptime": "17:18  up 1 day,  6:18, 6 users, load averages: 2.88 1.97 1.59"
+  },
+  "modules": {
+    "sts2": {
+      "branch": "raft-46",
+      "commit": "46ff3da7217f3a3e41516344c75f19860e8a82e7",
+      "diff": "diff --git a/src/main/resources/logback.xml b/src/main/resources/logback.xml\nindex 94f3de7..632207f 100644\n--- a/src/main/resources/logback.xml\n+++ b/src/main/resources/logback.xml\n@@ -6,7 +6,7 @@\n     </encoder>\n   </appender>\n \n-  <root level=\"ERROR\">\n+  <root level=\"DEBUG\">\n     <appender-ref ref=\"STDOUT\" />\n   </root>\n </configuration>\ndiff --git a/src/main/scala/pl/project13/Runner.scala b/src/main/scala/pl/project13/Runner.scala\nindex 5070149..cf9d990 100644\n--- a/src/main/scala/pl/project13/Runner.scala\n+++ b/src/main/scala/pl/project13/Runner.scala\n@@ -155,7 +155,7 @@ object Init {\n }\n \n object Main extends App {\n-  Instrumenter().setLogLevel(\"ERROR\")\n+  Instrumenter().setLogLevel(\"DEBUG\")\n \n   EventTypes.setExternalMessageFilter(Init.externalMessageFilter)\n   Instrumenter().setPassthrough\n@@ -199,7 +199,7 @@ object Main extends App {\n   val messageGen = new ClientMessageGenerator(members)\n   val fuzzer = new Fuzzer(100, weights, messageGen, prefix)\n \n-  val fuzz = false\n+  val fuzz = true\n \n   var traceFound: EventTrace = null\n   var violationFound: ViolationFingerprint = null\n@@ -214,6 +214,7 @@ object Main extends App {\n     }\n     def randomizationStrategy() : RandomizationStrategy = {\n       return new SrcDstFIFO\n+      //return new FullyRandom\n     }\n     val tuple = RunnerUtils.fuzz(fuzzer, raftChecks.invariant,\n                                  schedulerConfig,\n@@ -251,9 +252,9 @@ object Main extends App {\n     println(\"MCS DIR: \" + mcs_dir)\n   } else { // !fuzz\n     val dir =\n-    \"experiments/akka-raft-fuzz-long_2015_09_02_12_36_41\"\n+    \"experiments/akka-raft-fuzz-long_2016_01_04_18_51_13\"\n     val mcs_dir =\n-    \"experiments/akka-raft-fuzz-long_2015_09_02_12_36_41_DDMin_STSSchedNoPeek\"\n+    \"experiments/akka-raft-fuzz-long_2016_01_04_18_51_13_DDMin_STSSchedNoPeek\"\n \n     val msgSerializer = new RaftMessageSerializer\n     val msgDeserializer = new RaftMessageDeserializer(Instrumenter()._actorSystem)",
+      "status": "On branch raft-46\nYour branch and 'origin/raft-46' have diverged,\nand have 6 and 1 different commit each, respectively.\n  (use \"git pull\" to merge the remote branch into yours)\nChanges not staged for commit:\n  (use \"git add <file>...\" to update what will be committed)\n  (use \"git checkout -- <file>...\" to discard changes in working directory)\n\n\tmodified:   src/main/resources/logback.xml\n\tmodified:   src/main/scala/pl/project13/Runner.scala\n\nno changes added to commit (use \"git add\" and/or \"git commit -a\")"
+    }
+  },
+  "sys": {
+    "lsb_release": "",
+    "uname": "Darwin yossarian 14.5.0 Darwin Kernel Version 14.5.0: Tue Sep  1 21:23:09 PDT 2015; root:xnu-2782.50.1~1/RELEASE_X86_64 x86_64"
+  },
+  "timestamp": "2016_01_05_17_18_41",
+  "user": "cs"
+}
