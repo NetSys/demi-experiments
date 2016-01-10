@@ -6,7 +6,7 @@ from extract_runtime_stats import *
 experiments = [
   ("raft-45", "akka-raft-fuzz-long_2016_01_03_20_36_00_DDMin_STSSchedNoPeek"), # "akka-raft-fuzz-long_2015_09_02_12_18_50_DDMin_STSSchedNoPeek"
   ("raft-46", "akka-raft-fuzz-long_2016_01_05_17_18_39_DDMin_STSSchedNoPeek"), # "akka-raft-fuzz-long_2015_09_02_12_36_41_DDMin_STSSchedNoPeek"
-  ("raft-56", "akka-raft-fuzz-long_2015_09_02_12_48_32_DDMin_STSSchedNoPeek"),
+  ("raft-56", "akka-raft-fuzz-long_2016_01_10_13_47_46_DDMin_STSSchedNoPeek"), # "akka-raft-fuzz-long_2015_09_02_12_48_32_DDMin_STSSchedNoPeek"
   ("raft-58-init", "akka-raft-fuzz-long_2015_09_02_13_25_20_DDMin_STSSchedNoPeek"),
   ("raft-58-log-match", "akka-raft-fuzz-long_2015_08_30_20_59_21_DDMin_STSSchedNoPeek"),
   ("raft-42", "akka-raft-fuzz-long_2015_08_30_21_57_21_DDMin_STSSchedNoPeek"),
@@ -21,6 +21,7 @@ experiments = [
 #  ("raft-45-opt", "akka-raft-interactive_2016_01_03_15_13_24"),
 #  ("raft-46-opt", "akka-raft-interactive_2016_01_05_17_02_39"),
 #  ("raft-56-opt", "akka-raft-interactive_2016_01_09_18_05_42"),
+
 
 NUM_NODES = 4
 

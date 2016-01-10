@@ -1,0 +1,31 @@
+{
+  "additional_metadata": null,
+  "argv": [
+    "././interposition/src/main/python/setup.py",
+    "-t",
+    "-n",
+    "akka-raft-fuzz-long"
+  ],
+  "cwd": "/home/vagrant/demi-applications",
+  "host": {
+    "cpu_info": "Intel(R) Xeon(R) CPU E5-2650 v2 @ 2.60GHz",
+    "free": "total       used       free     shared    buffers     cached\nMem:      10240708    2381596    7859112        676      61220     568720\n-/+ buffers/cache:    1751656    8489052\nSwap:            0          0          0",
+    "name": "vagrant-ubuntu-trusty-64",
+    "num_cores": "8",
+    "uptime": "13:47:46 up 10:55,  2 users,  load average: 0.90, 0.89, 0.54"
+  },
+  "modules": {
+    "sts2": {
+      "branch": "raft-56",
+      "commit": "c1654745a333b0fd7281bb637dcf94542e250939",
+      "diff": "",
+      "status": "On branch raft-56\nYour branch is up-to-date with 'origin/raft-56'.\n\nnothing to commit, working directory clean"
+    }
+  },
+  "sys": {
+    "lsb_release": "Ubuntu 14.04.3 LTS",
+    "uname": "Linux vagrant-ubuntu-trusty-64 3.13.0-68-generic #111-Ubuntu SMP Fri Nov 6 18:17:06 UTC 2015 x86_64 x86_64 x86_64 GNU/Linux"
+  },
+  "timestamp": "2016_01_10_13_47_46",
+  "user": "vagrant"
+}
