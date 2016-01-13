@@ -18,9 +18,10 @@ experiments = [
 ]
 
 # Optimal runs:
-#  ("raft-45-opt", "akka-raft-interactive_2016_01_03_15_13_24"),
-#  ("raft-46-opt", "akka-raft-interactive_2016_01_05_17_02_39"),
-#  ("raft-56-opt", "akka-raft-interactive_2016_01_09_18_05_42"),
+#  ("raft-45-opt", "akka-raft-interactive_2016_01_03_15_13_24"), # 4 nodes
+#  ("raft-46-opt", "akka-raft-interactive_2016_01_05_17_02_39"), # 3 nodes
+#  ("raft-56-opt", "akka-raft-interactive_2016_01_09_18_05_42"), # 4 nodes
+#  ("raft-58-init-opt", "akka-raft-interactive_2016_01_12_18_42_05"), # 4 nodes, 3 sends
 
 
 NUM_NODES = 4
