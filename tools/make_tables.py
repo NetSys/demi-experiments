@@ -22,8 +22,9 @@ experiments = [
 #  ("raft-46-opt", "akka-raft-interactive_2016_01_05_17_02_39"), # 3 nodes
 #  ("raft-56-opt", "akka-raft-interactive_2016_01_09_18_05_42"), # 4 nodes
 #  ("raft-58-init-opt", "akka-raft-interactive_2016_01_12_18_42_05"), # 4 nodes, 3 sends
-#  ("raft-42", "akka-raft-interactive_2016_01_17_21_21_00"), # 4 nodes
-#  ("raft-66", "akka-raft-interactive_2016_01_17_21_51_48"), # 4 nodes
+#  ("raft-58-opt", "akka-raft-interactive_2016_01_18_13_21_55"), # 2 nodes [3 node cluster]
+#  ("raft-42-opt", "akka-raft-interactive_2016_01_17_21_21_00"), # 4 nodes
+#  ("raft-66-opt", "akka-raft-interactive_2016_01_17_21_51_48"), # 4 nodes
 
 NUM_NODES = 4
 

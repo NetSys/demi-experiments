@@ -1,0 +1,31 @@
+{
+  "additional_metadata": null,
+  "argv": [
+    "././interposition/src/main/python/setup.py",
+    "-t",
+    "-n",
+    "akka-raft-interactive"
+  ],
+  "cwd": "/Users/cs/Research/UCB/code/demi-applications",
+  "host": {
+    "cpu_info": "",
+    "free": "",
+    "name": "yossarian",
+    "num_cores": "0",
+    "uptime": "13:21  up 14 days,  2:22, 5 users, load averages: 1.78 1.74 1.65"
+  },
+  "modules": {
+    "sts2": {
+      "branch": "raft-58",
+      "commit": "0bed71350caeb5a233fa78665dbb676fd2834d21",
+      "diff": "diff --git a/src/main/resources/logback.xml b/src/main/resources/logback.xml\nindex 94f3de7..632207f 100644\n--- a/src/main/resources/logback.xml\n+++ b/src/main/resources/logback.xml\n@@ -6,7 +6,7 @@\n     </encoder>\n   </appender>\n \n-  <root level=\"ERROR\">\n+  <root level=\"DEBUG\">\n     <appender-ref ref=\"STDOUT\" />\n   </root>\n </configuration>\ndiff --git a/src/main/scala/pl/project13/Runner.scala b/src/main/scala/pl/project13/Runner.scala\nindex 739e1a2..dcbfc12 100644\n--- a/src/main/scala/pl/project13/Runner.scala\n+++ b/src/main/scala/pl/project13/Runner.scala\n@@ -155,7 +155,7 @@ object Init {\n }\n \n object Main extends App {\n-  Instrumenter().setLogLevel(\"ERROR\")\n+  Instrumenter().setLogLevel(\"DEBUG\")\n \n   EventTypes.setExternalMessageFilter(Init.externalMessageFilter)\n   Instrumenter().setPassthrough\n@@ -199,7 +199,7 @@ object Main extends App {\n   val messageGen = new ClientMessageGenerator(members)\n   val fuzzer = new Fuzzer(200, weights, messageGen, prefix)\n \n-  val fuzz = true\n+  val fuzz = false\n \n   var traceFound: EventTrace = null\n   var violationFound: ViolationFingerprint = null\n@@ -275,6 +275,7 @@ object Main extends App {\n     val msgDeserializer = new RaftMessageDeserializer(Instrumenter()._actorSystem)\n \n     RunnerUtils.replayExperiment(mcs_dir, schedulerConfig, msgDeserializer, traceFile=ExperimentSerializer.minimizedInternalTrace, externalsFile=ExperimentSerializer.mcs)\n+    //RunnerUtils.replayExperiment(mcs_dir, schedulerConfig, msgDeserializer)\n \n     val deserializer = new ExperimentDeserializer(mcs_dir)\n     val violation = deserializer.get_violation(msgDeserializer)\ndiff --git a/src/main/scala/pl/project13/scala/akka/raft/RaftActor.scala b/src/main/scala/pl/project13/scala/akka/raft/RaftActor.scala\nindex 1454495..9963a5e 100644\n--- a/src/main/scala/pl/project13/scala/akka/raft/RaftActor.scala\n+++ b/src/main/scala/pl/project13/scala/akka/raft/RaftActor.scala\n@@ -48,14 +48,18 @@ abstract class RaftActor extends Actor with LoggingFSM[RaftState, Metadata]\n       val state = List(replicatedLog, nextIndex, matchIndex, stateData)\n       context.actorFor(\"../\" + CheckpointSink.name) ! CheckpointReply(state)\n     case m =>\n-      //println(\"RAFT \" + self.path.name + \" FSM received \" + m + \" \" + super.getLog.map(_.stateName) + \" \" +\n-      //  isTimerActive(ElectionTimeoutTimerName) )\n-      //println(\"BEFORE RECEIVE, LOG: \" + replicatedLog)\n-      //println(\"BEFORE RECEIVE, STATE: \" + stateData)\n+      println(\"RAFT \" + self.path.name + \" FSM received \" + sender().path.name\n+        + \" \" + m + \" \" +\n+        super.getLog.map(_.stateName))\n+        //isTimerActive(ElectionTimeoutTimerName) )\n+      println(\"BEFORE RECEIVE, LOG: \" + replicatedLog)\n+      println(\"BEFORE RECEIVE, STATE: \" + stateData)\n+      println(\"BEFORE RECEIVE, nextIndex: \" + nextIndex)\n       super.receive(m)\n-      //println(\"AFTER RECEIVE, LOG: \" + replicatedLog)\n-      //println(\"AFTER RECEIVE, STATE: \" + stateData)\n-      //println(\"RAFT \" + self.path.name + \" Done FSM received \" + m + \" \" + super.getLog.map(_.stateName))\n+      println(\"AFTER RECEIVE, LOG: \" + replicatedLog)\n+      println(\"AFTER RECEIVE, STATE: \" + stateData)\n+      println(\"AFTER RECEIVE, nextIndex: \" + nextIndex)\n+      println(\"RAFT \" + self.path.name + \" Done FSM received \" + m + \" \" + super.getLog.map(_.stateName))\n   }\n \n   val heartbeatInterval: FiniteDuration = raftConfig.heartbeatInterval",
+      "status": "On branch raft-58\nYour branch is ahead of 'origin/raft-58' by 2 commits.\n  (use \"git push\" to publish your local commits)\nChanges not staged for commit:\n  (use \"git add <file>...\" to update what will be committed)\n  (use \"git checkout -- <file>...\" to discard changes in working directory)\n\n\tmodified:   src/main/resources/logback.xml\n\tmodified:   src/main/scala/pl/project13/Runner.scala\n\tmodified:   src/main/scala/pl/project13/scala/akka/raft/RaftActor.scala\n\nUntracked files:\n  (use \"git add <file>...\" to include in what will be committed)\n\n\tminimized.txt\n\nno changes added to commit (use \"git add\" and/or \"git commit -a\")"
+    }
+  },
+  "sys": {
+    "lsb_release": "",
+    "uname": "Darwin yossarian 14.5.0 Darwin Kernel Version 14.5.0: Tue Sep  1 21:23:09 PDT 2015; root:xnu-2782.50.1~1/RELEASE_X86_64 x86_64"
+  },
+  "timestamp": "2016_01_18_13_21_55",
+  "user": "cs"
+}
