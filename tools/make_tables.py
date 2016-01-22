@@ -3,7 +3,7 @@
 from extract_runtime_stats import *
 
 # long runs:
-#  [experiment name, directory, number of nodes]
+#  [experiment name, directory, number of nodes after minimization]
 experiments = [
   ("raft-45", "akka-raft-fuzz-long_2016_01_03_20_36_00_DDMin_STSSchedNoPeek", 4), # "akka-raft-fuzz-long_2015_09_02_12_18_50_DDMin_STSSchedNoPeek"
   ("raft-46", "akka-raft-fuzz-long_2016_01_05_17_18_39_DDMin_STSSchedNoPeek", 4), # "akka-raft-fuzz-long_2015_09_02_12_36_41_DDMin_STSSchedNoPeek"
@@ -15,11 +15,11 @@ experiments = [
   ("spark-2294", "spark-fuzz_2015_09_22_10_35_51_DDMin_STSSchedNoPeek", 0),
   ("spark-2294-blocks", "spark-fuzz_2015_09_21_17_53_01_DDMin_STSSchedNoPeek", 0),
   ("spark-3150", "spark-fuzz_2015_09_22_12_36_30_DDMin_STSSchedNoPeek", 0),
-  ("spark-9256", "spark-fuzz_2015_09_15_20_44_06_DDMin_STSSchedNoPeek", 0)
+  ("spark-9256", "spark-fuzz_2016_01_21_20_03_50_DDMin_STSSchedNoPeek", 0)
 ]
 
 # optimal runs:
-#  [experiment name, directory, number of nodes]
+#  [experiment name, directory, number of nodes after minimization]
 optimal = [
   ("raft-45-opt", "akka-raft-interactive_2016_01_03_15_13_24", 4),
   ("raft-46-opt", "akka-raft-interactive_2016_01_05_17_02_39", 3),
